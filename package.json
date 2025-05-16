@@ -1,0 +1,23 @@
+{
+  "name": "nellekestrik",
+  "version": "1.0.0",
+  "description": "Nelleke Strik Psychotherapy Website",
+  "main": "index.js",
+  "scripts": {
+    "start": "eleventy --serve",
+    "build": "eleventy",
+    "clean": "rm -rf public",
+    "debug": "DEBUG=* eleventy"
+  },
+  "keywords": [
+    "psychotherapy",
+    "therapy",
+    "mental health",
+    "website"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@11ty/eleventy": "^2.0.1"
+  }
+}

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% if title %}{{ title }} | {% endif %}Nelleke Strik - Psychotherapie</title>
+    <meta name="description" content="{% if description %}{{ description }}{% else %}Nelleke Strik biedt professionele psychotherapie in een veilige en vertrouwde omgeving.{% endif %}">
+    <link rel="stylesheet" href="/css/main.css">
+    {% if pageStyles %}<link rel="stylesheet" href="/css/{{ pageStyles }}">{% endif %}
+</head>
+<body>
+    {% include "partials/header.njk" %}
+
+    <main>
+        {{ content | safe }}
+    </main>
+
+    {% include "partials/footer.njk" %}
+
+    <script src="/js/main.js"></script>
+    {% if pageScripts %}<script src="/js/{{ pageScripts }}"></script>{% endif %}
+</body>
+</html>
