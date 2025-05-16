@@ -11,7 +11,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: ["18"]
+        node-version: ["18"] # You can update to '20' if your project is compatible
 
     permissions:
       contents: write # Needed for deployment to gh-pages
@@ -33,7 +33,9 @@ jobs:
         run: npm ci || npm install # Falls back to npm install if npm ci fails
 
       - name: Build site
-        run: npm run build
+        run: npx @11ty/eleventy --pathprefix="${{ github.repository }}"
+        env:
+          GITHUB_REPOSITORY: ${{ github.repository }}
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4

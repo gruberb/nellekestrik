@@ -1,16 +1,16 @@
 <header>
     <div class="container">
         <div class="header-content">
-            <a href="/" class="logo">
+            <a href="{{ '/' | url }}" class="logo">
                 <div class="logo-icon">N</div>
                 <h1>Nelleke Strik</h1>
             </a>
             <nav>
                 <ul>
-                    <li><a href="/" {% if page.url == '/' %}class="active"{% endif %}>Home</a></li>
-                    <li><a href="{% if page.url == '/' %}#services{% else %}/services/{% endif %}" {% if page.url == '/services/' %}class="active"{% endif %}>Diensten</a></li>
-                    <li><a href="{% if page.url == '/' %}#about{% else %}/about/{% endif %}" {% if page.url == '/about/' %}class="active"{% endif %}>Over Mij</a></li>
-                    <li><a href="{% if page.url == '/' %}#contact{% else %}/contact/{% endif %}" {% if page.url == '/contact/' %}class="active"{% endif %}>Contact</a></li>
+                    <li><a href="{{ '/' | url }}" {% if page.url == '/' %}class="active"{% endif %}>Home</a></li>
+                    <li><a href="{% if page.url == '/' %}#services{% else %}{{ '/services/' | url }}{% endif %}" {% if page.url == '/services/' %}class="active"{% endif %}>Diensten</a></li>
+                    <li><a href="{% if page.url == '/' %}#about{% else %}{{ '/about/' | url }}{% endif %}" {% if page.url == '/about/' %}class="active"{% endif %}>Over Mij</a></li>
+                    <li><a href="{% if page.url == '/' %}#contact{% else %}{{ '/contact/' | url }}{% endif %}" {% if page.url == '/contact/' %}class="active"{% endif %}>Contact</a></li>
                 </ul>
                 <button class="mobile-menu-btn">☰</button>
             </nav>

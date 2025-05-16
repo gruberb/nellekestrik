@@ -1,20 +1,24 @@
-module.exports = function(eleventyConfig) {
-  // Copy static assets to the output folder
+module.exports = function (eleventyConfig) {
+  // Explicitly copy static assets to output folder
   eleventyConfig.addPassthroughCopy("src/css");
   eleventyConfig.addPassthroughCopy("src/js");
   eleventyConfig.addPassthroughCopy("src/images");
 
-  // Watch for changes in CSS and JS files
-  eleventyConfig.addWatchTarget("src/css/");
-  eleventyConfig.addWatchTarget("src/js/");
-
   // BrowserSync configuration
   eleventyConfig.setBrowserSyncConfig({
+    files: './public/css/**/*.css',
+    files: './public/js/**/*.js',
     ui: false,
     ghostMode: false
   });
 
+  // Configure pathPrefix for GitHub Pages
+  const pathPrefix = process.env.GITHUB_REPOSITORY
+    ? `/${process.env.GITHUB_REPOSITORY.split('/')[1]}/`
+    : '/';
+
   return {
+    pathPrefix: pathPrefix,
     dir: {
       input: "src",           // Source directory
       output: "public",       // Output directory

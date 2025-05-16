@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% if title %}{{ title }} | {% endif %}Nelleke Strik - Psychotherapie</title>
     <meta name="description" content="{% if description %}{{ description }}{% else %}Nelleke Strik biedt professionele psychotherapie in een veilige en vertrouwde omgeving.{% endif %}">
-    <link rel="stylesheet" href="/css/main.css">
-    {% if pageStyles %}<link rel="stylesheet" href="/css/{{ pageStyles }}">{% endif %}
+    <link rel="stylesheet" href="{{ '/css/main.css' | url }}">
+    {% if pageStyles %}<link rel="stylesheet" href="{{ '/css/' + pageStyles | url }}">{% endif %}
 </head>
 <body>
     {% include "partials/header.njk" %}
@@ -17,7 +17,8 @@
 
     {% include "partials/footer.njk" %}
 
-    <script src="/js/main.js"></script>
-    {% if pageScripts %}<script src="/js/{{ pageScripts }}"></script>{% endif %}
+    <!-- Notice the use of the URL filter to handle the path prefix -->
+    <script src="{{ '/js/main.js' | url }}"></script>
+    {% if pageScripts %}<script src="{{ '/js/' + pageScripts | url }}"></script>{% endif %}
 </body>
 </html>
