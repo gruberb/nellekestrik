@@ -12,18 +12,15 @@ module.exports = function (eleventyConfig) {
     ghostMode: false
   });
 
-  // Configure pathPrefix for GitHub Pages
-  const pathPrefix = process.env.GITHUB_REPOSITORY
-    ? `/${process.env.GITHUB_REPOSITORY.split('/')[1]}/`
-    : '/';
-
+  // Set a FIXED path prefix for your repository
+  // Replace 'nellekestrik' with your actual repository name
   return {
-    pathPrefix: pathPrefix,
+    pathPrefix: "/nellekestrik/",
     dir: {
-      input: "src",           // Source directory
-      output: "public",       // Output directory
-      includes: "_includes",  // Includes directory
-      data: "_data"           // Data directory
+      input: "src",
+      output: "public",
+      includes: "_includes",
+      data: "_data"
     },
     templateFormats: ["njk", "md", "html"],
     markdownTemplateEngine: "njk",

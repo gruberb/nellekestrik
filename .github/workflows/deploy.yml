@@ -33,9 +33,8 @@ jobs:
         run: npm ci || npm install # Falls back to npm install if npm ci fails
 
       - name: Build site
-        run: npx @11ty/eleventy --pathprefix="${{ github.repository }}"
-        env:
-          GITHUB_REPOSITORY: ${{ github.repository }}
+        # Using a fixed, explicit path prefix for the repository
+        run: npx @11ty/eleventy --pathprefix="nellekestrik"
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
