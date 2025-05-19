@@ -1,12 +1,15 @@
 <!DOCTYPE html>
-<html lang="nl">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% if title %}{{ title }} | {% endif %}Nelleke Strik - Psychotherapie</title>
-    <meta name="description" content="{% if description %}{{ description }}{% else %}Nelleke Strik biedt professionele psychotherapie in een veilige en vertrouwde omgeving.{% endif %}">
+    <title>{% if title %}{{ title }} | {% endif %}Nelleke Strik - Counselling & Psychotherapy</title>
+    <meta name="description" content="{% if description %}{{ description }}{% else %}Nelleke Strik offers professional counselling and psychotherapy in a safe, supportive, and non-judgmental space.{% endif %}">
     <link rel="stylesheet" href="{{ '/css/main.css' | url }}">
     {% if pageStyles %}<link rel="stylesheet" href="{{ '/css/' + pageStyles | url }}">{% endif %}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
     {% include "partials/header.njk" %}
