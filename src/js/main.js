@@ -12,8 +12,8 @@ document.addEventListener('DOMContentLoaded', function () {
   // Close mobile menu when clicking outside
   document.addEventListener('click', function (event) {
     if (navMenu && navMenu.classList.contains('show') &&
-        !event.target.closest('nav') &&
-        !event.target.closest('.mobile-menu-btn')) {
+      !event.target.closest('nav') &&
+      !event.target.closest('.mobile-menu-btn')) {
       navMenu.classList.remove('show');
     }
   });
@@ -80,9 +80,15 @@ document.addEventListener('DOMContentLoaded', function () {
   // Add active class to nav links based on scroll position
   function setActiveNavLink() {
     const sections = document.querySelectorAll('section[id]');
-    const navLinks = document.querySelectorAll('nav a[href^="#"]');
-
     const scrollPosition = window.scrollY + 100; // Offset
+
+    // Remove active class from all links first
+    document.querySelectorAll('nav a').forEach(link => {
+      link.classList.remove('active');
+    });
+
+    // Find the current section and add active class to corresponding nav link
+    let currentSection = '';
 
     sections.forEach(section => {
       const sectionTop = section.offsetTop - 120; // Offset
@@ -90,27 +96,30 @@ document.addEventListener('DOMContentLoaded', function () {
       const sectionId = section.getAttribute('id');
 
       if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-        navLinks.forEach(link => {
-          link.classList.remove('active');
-          if (link.getAttribute('href') === `#${sectionId}`) {
-            link.classList.add('active');
-          }
-        });
+        currentSection = sectionId;
+        const activeLink = document.querySelector(`nav a.nav-${sectionId}`);
+        if (activeLink) {
+          activeLink.classList.add('active');
+        }
       }
     });
 
-    // Add active class to Home link when at the top
-    if (scrollPosition < 100) {
-      navLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href') === '/' || link.getAttribute('href') === '#home') {
-          link.classList.add('active');
-        }
-      });
+    // If we're at the top of the page or no section is active, activate Home
+    if (scrollPosition < 100 || currentSection === '') {
+      const homeLink = document.querySelector('nav a.nav-home');
+      if (homeLink) {
+        homeLink.classList.add('active');
+      }
     }
   }
 
-  // Call once on load and then on scroll
+  // Call once on load
   setActiveNavLink();
-  window.addEventListener('scroll', setActiveNavLink);
+
+  // And then on scroll with a slight debounce
+  let scrollTimer;
+  window.addEventListener('scroll', function () {
+    clearTimeout(scrollTimer);
+    scrollTimer = setTimeout(setActiveNavLink, 50);
+  });
 });

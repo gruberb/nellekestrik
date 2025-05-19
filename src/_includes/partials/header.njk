@@ -13,11 +13,13 @@
             </a>
             <nav>
                 <ul>
-                    <li><a href="{{ '/' | url }}" {% if page.url == '/' %}class="active"{% endif %}>Home</a></li>
-                    <li><a href="{% if page.url == '/' %}#services{% else %}{{ '/#services' | url }}{% endif %}" {% if page.url == '/services/' %}class="active"{% endif %}>Services</a></li>
-                    <li><a href="{% if page.url == '/' %}#about{% else %}{{ '/#about' | url }}{% endif %}" {% if page.url == '/about/' %}class="active"{% endif %}>About</a></li>
-                    <li><a href="{% if page.url == '/' %}#testimonials{% else %}{{ '/#testimonials' | url }}{% endif %}" {% if page.url == '/testimonials/' %}class="active"{% endif %}>Testimonials</a></li>
-                    <li><a href="{% if page.url == '/' %}#contact{% else %}{{ '/#contact' | url }}{% endif %}" {% if page.url == '/contact/' %}class="active"{% endif %}>Contact</a></li>
+                    <li><a href="{{ '/' | url }}" class="nav-home">Home</a></li>
+                    <li><a href="{% if page.url == '/' %}#issues{% else %}{{ '/#issues' | url }}{% endif %}" class="nav-issues">Issues</a></li>
+                    <li><a href="{% if page.url == '/' %}#services{% else %}{{ '/#services' | url }}{% endif %}" class="nav-services">Services</a></li>
+                    <li><a href="{% if page.url == '/' %}#about{% else %}{{ '/#about' | url }}{% endif %}" class="nav-about">About</a></li>
+                    <li><a href="{% if page.url == '/' %}#approach{% else %}{{ '/#approach' | url }}{% endif %}" class="nav-approach">Approach</a></li>
+                    <li><a href="{% if page.url == '/' %}#testimonials{% else %}{{ '/#testimonials' | url }}{% endif %}" class="nav-testimonials">Testimonials</a></li>
+                    <li><a href="{% if page.url == '/' %}#contact{% else %}{{ '/#contact' | url }}{% endif %}" class="nav-contact">Contact</a></li>
                 </ul>
                 <button class="mobile-menu-btn" aria-label="Toggle menu">☰</button>
             </nav>
