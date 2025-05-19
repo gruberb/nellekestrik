@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   // Smooth scrolling for anchor links
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
       const targetId = this.getAttribute('href');
 
@@ -35,6 +35,12 @@ document.addEventListener('DOMContentLoaded', function () {
         if (navMenu && navMenu.classList.contains('show')) {
           navMenu.classList.remove('show');
         }
+
+        // Immediately set this link as active (don't wait for scroll)
+        document.querySelectorAll('nav a').forEach(link => {
+          link.classList.remove('active');
+        });
+        this.classList.add('active');
 
         // Calculate header height for offset
         const headerHeight = document.querySelector('header').offsetHeight;
@@ -84,7 +90,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Remove active class from all links first
     document.querySelectorAll('nav a').forEach(link => {
-      link.classList.remove('active');
+      // Don't remove class if the link is currently being hovered
+      if (!link.matches(':hover')) {
+        link.classList.remove('active');
+      }
     });
 
     // Find the current section and add active class to corresponding nav link
